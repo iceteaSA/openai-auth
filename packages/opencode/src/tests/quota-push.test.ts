@@ -406,6 +406,7 @@ describe('QuotaManager push', () => {
     const store: AccountStorage = {
       version: 1,
       main: { type: 'opencode', provider: 'openai' },
+      mainAccountId: 'chatgpt-main',
       accounts: [
         {
           id: 'fallback-1',
@@ -422,6 +423,7 @@ describe('QuotaManager push', () => {
     const expectedMachine = {
       main: {
         quota: {
+          checkedAt: 1,
           primary: {
             usedPercent: 20,
             remainingPercent: 80,
@@ -430,6 +432,7 @@ describe('QuotaManager push', () => {
           },
           resetCreditsAvailable: 4,
         },
+        mainAccountId: 'chatgpt-main',
         killed: false,
         resetCredits: 4,
       },
@@ -438,6 +441,7 @@ describe('QuotaManager push', () => {
           id: 'fallback-1',
           label: undefined,
           quota: {
+            checkedAt: 1,
             primary: {
               usedPercent: 30,
               remainingPercent: 70,
